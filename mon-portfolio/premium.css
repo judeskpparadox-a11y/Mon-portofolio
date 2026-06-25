@@ -73,7 +73,7 @@ header {
 nav {
     display: flex;
     justify-content: space-between; /* pousse les enfants aux extrémités opposées */
-    align-items: center;
+    align-items: center;gi
     max-width: 1200px;
     margin: 0 auto;               /* centre la barre sur les grands écrans */
     padding: 16px 40px;
@@ -147,7 +147,7 @@ nav {
 
 
 /* ========== 5. HERO (section d'accueil) ========== */
-#acceuil {
+#Acceuil {
     display: flex;
     align-items: center;
     gap: 40px;
@@ -156,7 +156,7 @@ nav {
     background: radial-gradient(125% 130% at 78% 25%, #3a0a10 0%, #150406 38%, var(--bg) 68%);
 }
 
-#acceuil img {
+#Acceuil img {
     width: 100%;
     max-width: 280px;
     height: 340px;
@@ -438,6 +438,17 @@ footer {
 }
 
 
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
 /* =======================================================
    12. MEDIA QUERY — RESPONSIVE MOBILE
    ⚠️ RÈGLE D'OR : la media query va TOUJOURS TOUT EN BAS,
@@ -447,13 +458,13 @@ footer {
 @media (max-width: 900px) {
 
     /* --- Hero : on empile photo et texte --- */
-    #acceuil {
+    #Acceuil {
         flex-direction: column;  /* empile au lieu de côte à côte */
         text-align: center;
         padding: 40px 20px;
     }
 
-    #acceuil img {
+    #Acceuil img {
         width: 100%;
         max-width: 320px;
         height: auto;            /* garde les proportions */
