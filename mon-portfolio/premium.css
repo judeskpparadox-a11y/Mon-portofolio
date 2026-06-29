@@ -199,6 +199,34 @@ nav {
     font-weight: bold;
 }
 
+.hero-accroche {
+    font-size: 16px;
+    max-width: 480 px;
+    color: var(--text-muted);
+    margin: top 16px; ;
+    line-height:1.7 ;
+}
+
+
+.hero-texte > * {
+    opacity: 0;
+    animation: monteEnFondu 0.8s ease-out forwards;
+}
+/* Chaque élément apparaît légèrement après le précédent = effet cascade */
+.hero-texte h1            { animation-delay: 0.3s; }
+.hero-texte .hero-pitch   { animation-delay: 0.5s; }
+.hero-texte .hero-accroche{ animation-delay: 0.7s; }
+
+@keyframes monteEnFondu {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+
 
 /* ========== 6. COMPÉTENCES (cartes en grille) ========== */
 #competence {
@@ -206,6 +234,8 @@ nav {
 }
 
 .sous-titre {
+    font-size: 28px;
+    color: #fff;
     margin-bottom: 10px;
 }
 
@@ -226,15 +256,30 @@ nav {
     transition: 0.3s;            /* sur l'élément NORMAL, pas sur :hover */
 }
 
+
 .carte:hover {
     border-color: var(--accent);
-    transform: translateY(-5px); /* se soulève de 5px (Y négatif = vers le haut) */
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(255, 77, 87, 0.12);  /* ombre rouge subtile */
 }
 
+.carte:hover i {
+    background: var(--accent);  /* l'icône s'allume au survol */
+    color: #fff;
+}
+
+
 .carte i {
-    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 77, 87, 0.1);  /* fond rouge très léger */
+    font-size: 22px;
     color: var(--accent);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .carte h3 {
@@ -248,6 +293,10 @@ nav {
     font-size: 14px;
 }
 
+
+.carte {
+    padding: 28px;  /* au lieu de 24px : un peu plus d'espace intérieur */
+}
 
 /* ========== 7. PROJETS (grille intelligente) ========== */
 #projets {
@@ -288,19 +337,20 @@ nav {
 
 
 /* ========== 8. EXPÉRIENCES (timeline verticale) ========== */
+/* ========== 8. EXPÉRIENCES (timeline verticale) ========== */
 #experience {
     padding: 60px;
 }
 
 .timeline {
-    position: relative;          /* territoire de référence pour la ligne et les points */
+    position: relative;
     margin-top: 30px;
-    padding-left: 34px;          /* laisse la place à gauche pour la ligne */
+    padding-left: 34px;
 }
 
-/* La ligne verticale (pseudo-élément décoratif) */
+/* La ligne verticale */
 .timeline::before {
-    content: "";                 /* OBLIGATOIRE même vide, sinon rien ne s'affiche */
+    content: "";
     position: absolute;
     left: 7px;
     top: 6px;
@@ -309,22 +359,30 @@ nav {
     background: linear-gradient(180deg, var(--accent), #3a0a10);
 }
 
+/* Chaque étape */
 .etape {
-    position: relative;          /* mini-territoire pour son point */
-    margin-bottom: 28px;
+    position: relative;
+    margin-bottom: 36px;
 }
 
-/* Le point rouge de chaque étape */
+/* Le point rouge (UN SEUL bloc, avec transition incluse) */
 .etape::before {
     content: "";
     position: absolute;
-    left: -34px;                 /* valeur négative = pousse le point sur la ligne */
+    left: -34px;
     top: 4px;
     width: 16px;
     height: 16px;
-    border-radius: 50%;          /* 50% sur un carré = cercle parfait */
+    border-radius: 50%;
     background: var(--accent);
     border: 3px solid var(--bg);
+    transition: 0.3s;              /* fusionné ici */
+}
+
+/* Le point qui s'allume au survol de l'étape */
+.etape:hover::before {
+    box-shadow: 0 0 0 5px rgba(255, 77, 87, 0.15);
+    transform: scale(1.2);
 }
 
 .etape h3 {
@@ -333,17 +391,22 @@ nav {
     margin-bottom: 5px;
 }
 
+/* La durée en badge (UN SEUL bloc) */
 .duree {
+    display: inline-block;
+    background: rgba(255, 77, 87, 0.1);
     color: var(--accent);
-    font-size: 13px;
-    font-weight: normal;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 6px;
 }
 
 .etape p {
     color: var(--text-muted);
     font-size: 14px;
 }
-
 
 /* ========== 9. À PROPOS (colonne étroite centrée) ========== */
 #apropos {
